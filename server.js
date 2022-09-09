@@ -14,6 +14,8 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expLayout)
 app.use(express.static('public'))
+
+/*
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DBCONNECT, {
     useNewUrlParser: true
@@ -22,7 +24,7 @@ mongoose.connect(process.env.DBCONNECT, {
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
-
+*/
 app.use('/', indexRouter)
 
 
