@@ -1,2 +1,66 @@
-<h1>Get Jiggy Widdit</h1>
-<h2>Na na na na na na na </h2>
+
+<section class="heading">
+    
+    <div class="heading-info">
+        My Balance<br>
+        <% let myBalance = 0 %>
+        <% for(var i = 0; i < data.length; i++){
+            myBalance += data[i].amount
+        } %>
+        <span class="heading-balance">$<%= myBalance.toFixed(2) %></span>
+    </div>
+    <div>
+        <svg width="72" height="48" viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+                <circle fill="#382314" cx="48" cy="24" r="24"/>
+                <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23"/>
+            </g>
+        </svg>
+    </div>
+
+</section>
+<section class="chart-area">
+    <div class="chart-heading">Spending - Last 7 days</div>
+    <div class="chart">
+            <% for(var i = 0; i < data.length; i++){ %>
+                <div class="bars-section">
+                    <% var sign = "$" %>
+                    <% var amount = sign + data[i].amount.toFixed(2) %>
+                    <div class="detail"><%= amount %></div>
+                    <div class="bar" data-day="<%= data[i].day %>"></div>
+                    <div class="chart-caption"><%= data[i].day %></div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <div class="line-seperator"></div>
+    <div class="chart-footer">
+        <div class="footer-left">
+            <div class="footer-caption">Total this month</div>
+            <div class="footer-total"">$478.33</div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-percent">+2.4%</div>
+            <div class="footer-caption">from last month</div>
+        </div>
+    </div>
+</section>           
+
+<script>
+
+    bars = document.getElementsByClassName('bar')
+    totals = document.getElementsByClassName('detail')
+    for(var i = 0; i < bars.length; i++){
+        var label = totals[i].innerText
+        var amount = label.substring(1, label.length -1 )
+        bars[i].style.height = amount + "%"
+    }
+
+    wday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+    let d = new Date()
+    d = d.getDay()
+    today = wday[d]
+    
+    const thisBar = document.querySelector('[data-day=' + today + ']')
+    thisBar.style.backgroundColor = 'var(--bar-today)'
+</script>

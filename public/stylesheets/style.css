@@ -1,0 +1,269 @@
+
+:root
+{
+       
+    /* font scheme */
+    --ff: "DM Sans";
+
+    /* font sizing */
+    --fs-h1: 1.80em;
+    --fs-lg: 1.75em;
+    --fs-md: 1.45em;
+    --fs-nm: .90em;
+    --fs-sm: .78em;
+    --fs-mob: .5em;
+    /* font weights */
+    --fw-bold: 700;
+    --fw-norm: 400;
+
+    /* font coloring schems */
+    --fc-light: var(--cream);
+    --fc-dark: var(--brn-circle);
+    --fc-faded: var(--md-brn);
+
+    /* color scheme */
+    --body-bg: hsl(27, 66%, 92%);
+    --curr-day-clr: hsl(186, 34%, 60%);
+    --brn-circle: hsl(25, 47%, 15%);
+    --md-brn: hsl(28, 10%, 53%);
+    --cream: hsl(33, 100%, 98%);
+    --soft-red: hsl(10, 79%, 65%);
+
+
+    /* chart bar coloring */
+    --curr-day-color: hsl(186, 34%, 60%);
+    --bar-today: var(--curr-day-clr);
+    --bars: var(--soft-red);
+
+    /* chart sizing */
+    --ch-w: 25%;
+
+    /* Chart and headingpadding */
+    --chart-padding: 30px;
+
+    font-size: 20px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: var(--body-bg);
+}
+
+/* Create heading section for chart and center on page */
+.heading
+{
+    max-width: 95%;
+    width: 545px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--chart-padding);
+    background: var(--soft-red);
+    border-radius: 1.1em;
+}
+
+.heading svg
+{
+    display: flex;
+}
+
+.heading-info
+{
+    font-size: var(--fs-sm);
+}
+
+.heading-balance
+{
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+}
+
+.heading-info, .heading-balance
+{
+    text-shadow: 1px 0 2px hsla(25, 47%, 15%, .3);
+    color: var(--cream);
+}
+
+/* Create Chart Area */
+.chart-area
+{
+    width: 540px;
+    max-width: 95%;
+    padding: 30px;
+    background: var(--cream);
+    border-radius: 1.1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    place-items: center;
+}
+
+.chart-heading
+{
+    color: var(--fc-dark);
+    font-size: var(--fs-md);
+    align-self: flex-start;
+}
+
+.chart
+{
+    display: flex;
+    place-items: center;
+}
+
+.chart-caption
+{
+    font-size: var(--fs-sm);
+    color: var(--fc-faded);
+}
+
+.bars-section
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 12em;
+    gap: .4em;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+}
+
+.bars-section:hover .detail
+{
+    transition: opacity 250ms ease;
+    opacity: 1;
+}
+
+.bar
+{
+    background: var(--soft-red);
+    height: 0;
+    width: 2.5em;
+    border-radius: .25em;
+    margin: 0 .55em;
+    transition: opacity 250ms ease-in-out;
+}
+
+.bar:hover
+{
+    opacity: .55;
+}
+
+.detail
+{
+    display: flex;
+    align-items: center;
+    height: 2.3em;
+    font-size: var(--fs-nm);
+    color: var(--cream);
+    background: var(--brn-circle);
+    font-weight: var(--fw-bold);
+    padding: 1em .35em;
+    border-radius: .25em;
+    opacity: 0;
+}
+
+.chart-footer-hr
+{
+    border: 1 px solid var(--fc-faded);
+    width: 500px;
+}
+
+.chart-footer
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-left
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-right
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.footer-caption
+{
+    font-size: var(--fs-nm);
+    color: var(--fc-faded);
+}
+
+.footer-total
+{
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-bold);
+    color: var(--brn-circle);
+}
+
+.footer-percent
+{
+    color: var(--brn-circle);
+}
+
+.line-seperator
+{
+    width: 100%;
+    height: 2px;
+    background: var(--body-bg);
+    margin: 20px auto;
+}
+
+
+@media only screen and (max-width: 585px)
+{
+
+    .chart-area, .heading
+    {
+        border-radius: .5em;
+    }
+    .chart-heading
+{
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    font-size: 25px;
+}
+
+    .bar
+    {
+        width: 1.8em;
+        margin: 0 .25em;
+        border-radius: .2em;
+    }
+
+    .detail
+    {
+        font-size: var(--fs-mob);
+    }
+}
+/* style the line giving credit at the bottom */
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
