@@ -160,6 +160,7 @@ body
     border-radius: .25em;
     margin: 0 .55em;
     transition: opacity 250ms ease-in-out;
+    box-shadow: 0 0 1px var(--brn-circle);
 }
 
 .bar:hover
